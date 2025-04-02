@@ -9,10 +9,10 @@ bp = Blueprint("aircraft", __name__, url_prefix="/aircraft")
 def aircraft():
     aircraft = Aircraft.query.order_by(Aircraft.name).all()
     print("Aircraft: " + str(aircraft[0].categories))
-    return render_template("aircraft.html",
+    return render_template("aircraft/aircraft.html",
     aircraft=aircraft)
 
-@bp.route("/add_aircraft", methods=("GET", "POST"))
+@bp.route("/add", methods=("GET", "POST"))
 def add_aircraft():
     if request.method == "POST":
         try:
@@ -29,4 +29,4 @@ def add_aircraft():
         print("saved to db")
         return redirect(url_for("aircraft.aircraft"))
 
-    return render_template("add_aircraft.html")
+    return render_template("aircraft/add.html")
