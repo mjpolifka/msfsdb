@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} - Add Aircraft{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Hello Aircraft</h1>
+    <ul>
+        {% for craft in aircraft %}
+        <li><h3>{{ craft.description|title }} - {% for category in craft.categories %}{{ category.description }}, {% endfor %}</h3></li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

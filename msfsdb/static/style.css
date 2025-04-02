@@ -1,0 +1,60 @@
+.component-heading {
+    background-color: rgb(75, 75, 75);
+    color: white;
+    padding: 10px;
+    padding-left: 15px;
+}
+
+.navbar {
+    background-color: orange;
+}
+
+.main-icon {
+    background-color: rgb(75, 75, 75);
+    color: white;
+    padding: 12px 20px 15px 20px;
+    font-size: 2rem;
+    border-radius: 1rem;
+}
+
+.my-nav-link {
+    background-color: lightgray;
+    color: black;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    padding-inline: 5px;
+    margin-inline: 10px;
+}
+
+body {
+    background-color: lightgray;
+}
+
+.container {
+    box-shadow: 0 0 30px 10px rgb(75, 75, 75);
+    padding-bottom: 40px;
+    background-color: rgb(230,230,230);
+    /* height: 100% */
+}
+
+.my-link {
+    text-decoration: none;
+    color: rgb(75, 75, 75);
+    padding-bottom: 6px;
+    padding-top: 3px;
+}
+
+.my-link:hover {
+    color: orange;
+    background-color: rgb(75, 75, 75);
+    border-radius: 0.5rem;
+    padding-inline: 8px;
+}
+
+.my-list-item {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color: rgb(120, 120, 120);
+    list-style-type: none;
+}
+

@@ -1,0 +1,5 @@
+Ignored/*
+database.db
+__pycache__/*
+msfsdb/__pycache__/*
+msfsdb/models/__pycache__/*
