@@ -12,4 +12,4 @@ You should be ready to run!
 Run `flask run` to start the development server.
 In your browser, navigate to http://localhost:5000/init_db/ the first time you run it.
 
-Then, to access the app, navigate to http://localhost:5000/
+Then, to access the app, navigate to http://localhost:5000/aircraft
