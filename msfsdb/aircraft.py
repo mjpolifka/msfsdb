@@ -7,7 +7,7 @@ bp = Blueprint("aircraft", __name__, url_prefix="/aircraft")
 
 @bp.route("/")
 def aircraft():
-    aircraft = Aircraft.query.order_by(Aircraft.id).all()
+    aircraft = Aircraft.query.order_by(Aircraft.name).all()
     print("Aircraft: " + str(aircraft[0].categories))
     return render_template("aircraft.html",
     aircraft=aircraft)
