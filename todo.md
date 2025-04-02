@@ -29,8 +29,9 @@
 
 ### **/aircraft/delete**
 
-- show a list of aircraft, clicking on one confirms if you want to delete it  
-- deletes from database  
+- ~~show the list of aircraft, with links to delete confirmations~~
+- confirmation page displays the aircraft details, including the id since there can be dupes
+- confirming deletes from database  
 
 
 /category

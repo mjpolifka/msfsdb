@@ -51,7 +51,13 @@ def delete_page():
 @bp.route("/delete/<int:id>", methods=("GET", "POST"))
 def delete_aircraft(id):
     print("Aircraft id: " + str(id))
+
+    if request.method == "POST":
+        #then actually delete it and redirect
+        print("not yet deleting aircraft with id: " + str(id))
+        return redirect(url_for("aircraft.aircraft"))
+
     return render_template(
-        "aircraft/delete.html",
+        "aircraft/delete_confirm.html",
         id=id
     )
