@@ -9,8 +9,11 @@ bp = Blueprint("aircraft", __name__, url_prefix="/aircraft")
 def aircraft():
     aircraft = Aircraft.query.order_by(Aircraft.name).all()
     print("Aircraft: " + str(aircraft[0].categories))
-    return render_template("aircraft/aircraft.html",
-    aircraft=aircraft)
+
+    return render_template(
+        "aircraft/aircraft.html",
+        aircraft=aircraft
+    )
 
 @bp.route("/add", methods=("GET", "POST"))
 def add_aircraft():
@@ -27,6 +30,28 @@ def add_aircraft():
         db.session.add(aircraft)
         db.session.commit()
         print("saved to db")
+
         return redirect(url_for("aircraft.aircraft"))
 
     return render_template("aircraft/add.html")
+
+@bp.route("/delete", methods=("GET", "POST"))
+def delete_page():
+    aircraft = Aircraft.query.order_by(Aircraft.name).all()
+    
+    if request.method == "POST":
+
+        return redirect(url_for("aircraft.aircraft"))
+    
+    return render_template(
+        "aircraft/delete.html",
+        aircraft=aircraft
+    )
+
+@bp.route("/delete/<int:id>", methods=("GET", "POST"))
+def delete_aircraft(id):
+    print("Aircraft id: " + str(id))
+    return render_template(
+        "aircraft/delete.html",
+        id=id
+    )

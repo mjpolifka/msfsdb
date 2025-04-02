@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} - Add Aircraft{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Hello Aircraft</h1>
+    <ul>
+        {% for craft in aircraft %}
+        <li><h3><a href="{{ url_for('aircraft.delete_aircraft', id=craft.id) }}">{{ craft.description|title }}</a> - {{ craft.id }} - {% for category in craft.categories %}{{ category.description }}, {% endfor %}</h3></li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} - Add Aircraft{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Hello Aircraft</h1>
+    <h2>CONFIRM DELETION</h2>
+    <p>Id: {{ id }}</p>
+    <form action="{{ url_for('aircraft.delete_confirm', id=id) }}" method="post">
+        <input type="submit" value="Delete">
+    </form>
+</div>
+
+{% endblock %}
