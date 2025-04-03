@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask import flash
+from werkzeug.exceptions import abort
+
 from msfsdb.db import db
 from msfsdb.models import Aircraft
 
@@ -54,7 +56,12 @@ def delete_aircraft(id):
 
     if request.method == "POST":
         #then actually delete it and redirect
-        print("not yet deleting aircraft with id: " + str(id))
+        aircraft = Aircraft.query.filter_by(id=id).first()
+        if aircraft is None:
+            abort(404, f"Aircraft with id {id} doesn't exist.")
+        db.session.delete(aircraft)
+        db.session.commit()
+        print("deleted aircraft with id: " + str(id))
         return redirect(url_for("aircraft.aircraft"))
 
     return render_template(
