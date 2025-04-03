@@ -15,6 +15,12 @@
         <input name="description" id="description" value="{{ request.form['description'] }}">
         <br>
         
+        {% for category in categories %}
+            <input type="checkbox" name="{{ category.name }}" id="{{ category.name }}">
+            <label for="{{ category.name }}">{{ category.description }}</label>
+            <br>
+        {% endfor %}
+        
         <input type="submit" value="Save">
     </form>
 </div>

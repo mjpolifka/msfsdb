@@ -3,7 +3,7 @@ from flask import flash
 from werkzeug.exceptions import abort
 
 from msfsdb.db import db
-from msfsdb.models import Aircraft
+from msfsdb.models import Aircraft, Category
 
 bp = Blueprint("aircraft", __name__, url_prefix="/aircraft")
 
@@ -35,7 +35,12 @@ def add_aircraft():
 
         return redirect(url_for("aircraft.aircraft"))
 
-    return render_template("aircraft/add.html")
+    categories = Category.query.order_by(Category.name).all()
+    print(f"Categories: {str(categories)}")
+    return render_template(
+        "aircraft/add.html",
+        categories=categories
+    )
 
 @bp.route("/delete", methods=("GET", "POST"))
 def delete_page():
