@@ -3,7 +3,7 @@ from flask import flash
 from werkzeug.exceptions import abort
 
 from msfsdb.db import db
-from msfsdb.models import Aircraft
+from msfsdb.models import Aircraft, Category
 
 bp = Blueprint("aircraft", __name__, url_prefix="/aircraft")
 
@@ -19,6 +19,8 @@ def aircraft():
 
 @bp.route("/add", methods=("GET", "POST"))
 def add_aircraft():
+    categories = Category.query.order_by(Category.name).all()
+
     if request.method == "POST":
         try:
             aircraft = Aircraft(
@@ -31,20 +33,29 @@ def add_aircraft():
         
         db.session.add(aircraft)
         db.session.commit()
-        print("saved to db")
+        print(f"saved aircraft {aircraft.name} to db")
+
+        category_list = []
+        for category in categories:
+            if request.form[category.name] is not None:
+                category_list.extend([
+                    Category.query.filter_by(name=category.name).first()
+                ])
+        aircraft.categories = category_list
+        db.session.commit()
+        print(f"Saved category list to {aircraft.name}: {str(category_list)}")
 
         return redirect(url_for("aircraft.aircraft"))
 
-    return render_template("aircraft/add.html")
+    # print(f"Categories: {str(categories)}")
+    return render_template(
+        "aircraft/add.html",
+        categories=categories
+    )
 
-@bp.route("/delete", methods=("GET", "POST"))
+@bp.route("/delete")
 def delete_page():
     aircraft = Aircraft.query.order_by(Aircraft.name).all()
-    
-    if request.method == "POST":
-
-        return redirect(url_for("aircraft.aircraft"))
-    
     return render_template(
         "aircraft/delete.html",
         aircraft=aircraft
@@ -62,7 +73,7 @@ def delete_aircraft(id):
         db.session.delete(aircraft)
         db.session.commit()
         print("deleted aircraft with id: " + str(id))
-        return redirect(url_for("aircraft.aircraft"))
+        return redirect(url_for("aircraft.delete_page"))
 
     return render_template(
         "aircraft/delete_confirm.html",
