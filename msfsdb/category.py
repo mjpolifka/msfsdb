@@ -10,20 +10,20 @@ bp = Blueprint("category", __name__, url_prefix="/category")
 @bp.route("/")
 def category():
     categories = Category.query.order_by(Category.name).all()
-    print("Categories: " + str(categories))
+    # print("Categories: " + str(categories))
 
     return render_template(
         "category/category.html",
         categories=categories
     )
-"""
+
 @bp.route("/add", methods=("GET", "POST"))
 def add_aircraft():
-    categories = Category.query.order_by(Category.name).all()
+    aircraft = Aircraft.query.order_by(Aircraft.name).all()
 
     if request.method == "POST":
         try:
-            aircraft = Aircraft(
+            category = Category(
                 name=request.form['name'],
                 description=request.form['description']
             )
@@ -31,17 +31,29 @@ def add_aircraft():
             print(str(e))
             flash(str(e))
         
-        db.session.add(aircraft)
+        db.session.add(category)
         db.session.commit()
-        print("saved to db")
+        print(f"saved category { category.name } to db")
 
-        return redirect(url_for("aircraft.aircraft"))
+        aircraft_list = []
+        for item in request.form:
+            for craft in aircraft:
+                if str(item) == craft.name:
+                    aircraft_list.extend([
+                        Aircraft.query.filter_by(name=craft.name).first()
+                    ])
+        category.aircraft = aircraft_list
+        db.session.commit()
+        # print(f"Aircraft list: {str(aircraft_list)}")
+        print(f"Saved aircraft list to {category.name}: {str(aircraft_list)}")
+
+        return redirect(url_for("category.category"))
 
     return render_template(
-        "aircraft/add.html",
-        categories=categories
+        "category/add.html",
+        aircraft=aircraft
     )
-
+"""
 @bp.route("/delete", methods=("GET", "POST"))
 def delete_page():
     aircraft = Aircraft.query.order_by(Aircraft.name).all()
