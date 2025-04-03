@@ -36,11 +36,12 @@ def add_aircraft():
         print(f"saved aircraft {aircraft.name} to db")
 
         category_list = []
-        for category in categories:
-            if request.form[category.name] is not None:
-                category_list.extend([
-                    Category.query.filter_by(name=category.name).first()
-                ])
+        for item in request.form:
+            for category in categories:
+                if str(item) == category.name:
+                    category_list.extend([
+                        Category.query.filter_by(name=category.name).first()
+                    ])
         aircraft.categories = category_list
         db.session.commit()
         print(f"Saved category list to {aircraft.name}: {str(category_list)}")
