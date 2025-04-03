@@ -16,7 +16,7 @@ def category():
         "category/category.html",
         categories=categories
     )
-
+"""
 @bp.route("/add", methods=("GET", "POST"))
 def add_aircraft():
     categories = Category.query.order_by(Category.name).all()
@@ -73,3 +73,4 @@ def delete_aircraft(id):
         "aircraft/delete_confirm.html",
         id=id
     )
+"""

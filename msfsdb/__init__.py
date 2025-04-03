@@ -12,10 +12,10 @@ def create_app(test_config=None):
     
     db.init_app(app)
     
-    from msfsdb import index, aircraft, init_db
+    from msfsdb import index, init_db, aircraft, category
     app.register_blueprint(index.bp)
-    app.register_blueprint(aircraft.bp)
     app.register_blueprint(init_db.bp)
-    # app.register_blueprint(power.bp)
+    app.register_blueprint(aircraft.bp)
+    app.register_blueprint(category.bp)
     
     return app
