@@ -9,7 +9,9 @@
 ### /aircraft
 
 - ~~display list of all aircraft, maybe in alphabetical order (it is)~~
-- clicking on one brings you to /aircraft/aircraft_name  
+- ~~display a list of categories each plane is in~~
+- clicking on one brings you to /aircraft/aircraft_name
+- clicking any category brings you to the category list
 
 
 
@@ -20,13 +22,13 @@
   - otherwise, add /aircraft/edit/aircraft_name  
 
 
-## /aircraft/add
+### /aircraft/add
 
 - ~~input boxes for aircraft properties and submit~~
 - ~~saves to database~~
-- able to add from existing categories
+- ~~able to add from existing categories~~
   - ~~show a list with checkboxes for all existing categories~~
-  - add any categories which are checked
+  - ~~add any categories which are checked~~
 
 
 ### /aircraft/delete
