@@ -12,6 +12,7 @@
 - ~~display a list of categories each plane is in~~
 - clicking on one brings you to /aircraft/aircraft_name
 - clicking any category brings you to the category list
+- maybe a way to save favorites
 
 
 
@@ -29,6 +30,7 @@
 - ~~able to add from existing categories~~
   - ~~show a list with checkboxes for all existing categories~~
   - ~~add any categories which are checked~~
+- don't allow duplicate "name"
 
 
 ### /aircraft/delete
@@ -43,6 +45,9 @@
 ### /category
 
 - ~~copy /aircraft~~
+- checkboxes next to each category, with a "filter" button
+  - after selecting multiple categories and pressing filter, takes you to a view of all aircraft in all categories
+  - maybe a way to exclude a category
 
 
 ### /category/category_name
@@ -53,12 +58,17 @@
 ### /category/add
 
 - ~~copy /aircraft/add~~
+- don't allow duplicate "name"
 
 ### /category/delete
 
 - ~~copy /aircraft/delete~~
 
 
+### Other
+
+- add a way to make custom lists; maybe can use categories
+- implement login for custom lists and favorites
 
 
 Models:

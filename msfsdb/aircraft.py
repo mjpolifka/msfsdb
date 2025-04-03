@@ -9,7 +9,7 @@ bp = Blueprint("aircraft", __name__, url_prefix="/aircraft")
 
 @bp.route("/")
 def aircraft():
-    aircraft = Aircraft.query.order_by(Aircraft.name).all()
+    aircraft = Aircraft.query.order_by(Aircraft.description).all()
     print("Aircraft: " + str(aircraft[0].categories))
 
     return render_template(
@@ -19,7 +19,7 @@ def aircraft():
 
 @bp.route("/add", methods=("GET", "POST"))
 def add_aircraft():
-    categories = Category.query.order_by(Category.name).all()
+    categories = Category.query.order_by(Category.description).all()
 
     if request.method == "POST":
         try:
@@ -56,7 +56,7 @@ def add_aircraft():
 
 @bp.route("/delete")
 def delete_page():
-    aircraft = Aircraft.query.order_by(Aircraft.name).all()
+    aircraft = Aircraft.query.order_by(Aircraft.description).all()
     return render_template(
         "aircraft/delete.html",
         aircraft=aircraft
