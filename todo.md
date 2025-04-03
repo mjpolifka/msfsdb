@@ -42,19 +42,21 @@
 
 ### /category
 
-- see a list of categories  
-- click a category to go to /category/category_name
+- ~~copy /aircraft~~
 
 
 ### /category/category_name
 
-- see a list of aircraft in this category
-- click an aircraft to go to /aircraft/aircraft_name
+- copy /aircraft/aircraft_name
 
 
 ### /category/add
 
-- input boxes for category properties and submit
+- ~~copy /aircraft/add~~
+
+### /category/delete
+
+- ~~copy /aircraft/delete~~
 
 
 
