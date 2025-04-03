@@ -5,11 +5,15 @@
 {% block content %}
 <div class="container">
     <h1>Hello Categories</h1>
+    <a href="/">Home</a> | <a href="{{ url_for('aircraft.aircraft') }}">Aircraft</a>
     <ul>
         {% for category in categories %}
         <li><h3>{{ category.description|title }} - {% for craft in category.aircraft %}{{ craft.description }}, {% endfor %}</h3></li>
         {% endfor %}
     </ul>
+    <a href="{{ url_for('category.add_category') }}">Add</a>
+    <br>
+    <a href="{{ url_for('category.delete_page') }}">Delete</a>
 </div>
 
 {% endblock %}

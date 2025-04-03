@@ -1,5 +1,5 @@
-Ignored/*
-database.db
+Ignored/
+instance/
 __pycache__/*
 msfsdb/__pycache__/*
 msfsdb/models/__pycache__/*

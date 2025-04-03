@@ -18,7 +18,7 @@ def category():
     )
 
 @bp.route("/add", methods=("GET", "POST"))
-def add_aircraft():
+def add_category():
     aircraft = Aircraft.query.order_by(Aircraft.name).all()
 
     if request.method == "POST":
