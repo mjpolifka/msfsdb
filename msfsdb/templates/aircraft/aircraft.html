@@ -8,7 +8,12 @@
     <a href="/">Home</a> | <a href="{{ url_for('category.category') }}">Category</a>
     <ul>
         {% for craft in aircraft %}
-        <li><h3>{{ craft.description }} - {% for category in craft.categories %}{{ category.description }}, {% endfor %}</h3></li>
+        <li>
+            <h3>
+                <a href="{{ url_for('aircraft.aircraft_id', id=craft.id) }}">{{ craft.description }}</a>
+                 - {% for category in craft.categories %}{{ category.description }}, {% endfor %}
+            </h3>
+        </li>
         {% endfor %}
     </ul>
     <a href="{{ url_for('aircraft.add_aircraft') }}">Add</a>

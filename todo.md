@@ -10,15 +10,16 @@
 
 - ~~display list of all aircraft, maybe in alphabetical order (it is)~~
 - ~~display a list of categories each plane is in~~
-- clicking on one brings you to /aircraft/aircraft_name
-- clicking any category brings you to the category list
+- ~~clicking on one brings you to /aircraft/aircraft_name~~
 - maybe a way to save favorites
 
 
 
 ### /aircraft/aircraft_name
 
-- display details about the aircraft  
+- display details about the aircraft
+    - ~~show name, and all categories~~
+    - ~~link to each category~~
 - maybe some javascript on this page could let you modify it?  
   - otherwise, add /aircraft/edit/aircraft_name  
 

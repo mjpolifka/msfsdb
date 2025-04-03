@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} - Add Aircraft{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Hello {{ aircraft.description }}</h1>
+    
+    <a href="/">Home</a> | <a href="{{ url_for('aircraft.aircraft') }}">Aircraft</a> | <a href="{{ url_for('category.category') }}">Category</a>
+    
+    <h2>{{ aircraft.description }}</h2>
+    <ul>
+        {% for category in aircraft.categories %}
+        <li>
+            <h3>
+                <a href="{{ url_for('category.category_id', id=category.id) }}">{{ category.description }}</a>
+            </h3>
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <a href="{{ url_for('aircraft.aircraft') }}">Edit - Not Yet Implemented</a>
+    <br>
+    <a href="{{ url_for('aircraft.delete_aircraft', id=aircraft.id) }}">Delete</a>
+</div>
+
+{% endblock %}

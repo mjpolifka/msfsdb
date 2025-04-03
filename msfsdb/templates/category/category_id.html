@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} - Category{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Hello {{ category.description }}</h1>
+    <a href="/">Home</a> | <a href="{{ url_for('aircraft.aircraft') }}">Aircraft</a> | <a href="{{ url_for('category.category') }}">Category</a>
+    <h2>{{ category.description }}</h2>
+    <ul>
+        {% for craft in category.aircraft %}
+        <li>
+            <h3>
+                <a href="{{ url_for('aircraft.aircraft_id', id=craft.id) }}">{{ craft.description }}</a>
+            </h3>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('category.category') }}">Edit - Not Yet Implemented</a>
+    <br>
+    <a href="{{ url_for('category.delete_category', id=category.id) }}">Delete</a>
+</div>
+
+{% endblock %}

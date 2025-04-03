@@ -17,6 +17,14 @@ def aircraft():
         aircraft=aircraft
     )
 
+@bp.route("/<int:id>")
+def aircraft_id(id):
+    aircraft = Aircraft.query.filter_by(id=id).first()
+    return render_template(
+        "aircraft/aircraft_id.html",
+        aircraft=aircraft
+    )
+
 @bp.route("/add", methods=("GET", "POST"))
 def add_aircraft():
     categories = Category.query.order_by(Category.description).all()
